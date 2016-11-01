@@ -24,9 +24,6 @@ export class Ng2PageTransition{
     this.ng2PageTransition = "inactive";
     router.events.subscribe((event) => {
       if (event instanceof NavigationStart) {
-        if(this.scrollTop){
-          window.scrollTo(0, 0);
-        }
         this.ng2PageTransition = "inactive";
         setTimeout( () => {
             if(this.scrollTop){
