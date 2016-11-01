@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": false,
+    "moduleResolution": "node",
+    "declaration": true
+  },
+  "files": [
+    "./ng2-page-transition.ts",
+    "./src/ng2-page-transition.component.ts"
+  ]
+}
