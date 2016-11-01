@@ -1,9 +1,8 @@
 
 {
   "name": "ng2-page-transition",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Simple Angular2 component that creates a page transition animation on route changes",
-  
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bergben/ng2-page-transition.git"
