@@ -49,3 +49,6 @@ By default the component scrolls to top on route changes, you can disable this b
     Some other content
 </ng2-page-transition>
 ```
+
+## To-do
+ - Provide a demo
