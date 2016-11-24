@@ -22,9 +22,9 @@
   "keywords": [
     "angular",
     "angular2",
-    "scrolling",
-    "scrollimate",
-    "animations"
+    "page",
+    "transition",
+    "animation"
   ],
   "peerDependencies": {
     "@angular/router": "^3.0.0",
