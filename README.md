@@ -49,6 +49,82 @@ By default the component scrolls to top on route changes, you can disable this b
     Some other content
 </ng2-page-transition>
 ```
+### onlyOnRoutes
+By default the transition will take place on any route change. You can activate the transition only on routes that contain one or more certain strings:  
+```html
+<!-- my.component.html -->
+<ng2-page-transition [onlyOnRoutes]="['blog']">
+    <router-outlet></router-outlet>
+    Some other content
+</ng2-page-transition>
+```
+onlyOnRoutes takes an array of strings, in the example above the transition would only happen on any route containing "blog" in the url.
+
+### Custom transition
+If you want a different animation than the default fade out and in then you can do that like so:
+```html
+<!-- my.component.html -->
+<ng2-page-transition [animation]="customAnimation">
+    <div [@ng2ElementState]="customAnimation.state">
+        Some other content
+    </div>
+</ng2-page-transition>
+```
+```TypeScript
+ //my.component.ts
+ [...]
+ import { customTransition } from './custom-transition.animation';
+
+@Component({
+  selector: 'my-component', 
+  [...]
+  animations: [customTransition()],
+})
+export class MyComponent {
+  customAnimation:any = {custom:true, state:""};
+}
+```
+
+```TypeScript
+ //custom-transition.animation.ts
+ [...]
+import {trigger, state, animate, style, transition} from '@angular/core';
+
+export function customTransition() {
+  return slideOutAndIn();
+}
+
+function slideOutAndIn() {
+  return trigger('ng2ElementState', [
+    state('leave', style({
+        position:'fixed', 
+        width:'100%'
+    })),
+    state('enter', style({
+        position:'fixed', 
+        width:'100%'
+    })),
+    transition('* => enter', [
+        style({transform: 'translateX(100%)'}),
+        animate('0.5s ease-in-out', style({transform: 'translateX(0%)'}))
+    ]),
+    transition('* => leave', [
+      style({transform: 'translateX(0%)'}),
+      animate('0.5s ease-in-out', style({transform: 'translateX(-100%)'}))
+    ]),
+  ]);
+}
+```
+
+#### enterDelay
+You can wait for the leaving animation to complete:
+```TypeScript
+ //my.component.ts
+ [...]
+  customAnimation:any = {custom:true, state:"", enterDelay: 500};
+```
+In this case the entering animation would be delayed by 500 ms, allowing the leaving animation which takes 500ms to complete.
+
 
 ## To-do
  - Provide a demo
