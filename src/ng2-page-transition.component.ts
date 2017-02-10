@@ -1,11 +1,11 @@
 import { Component, animate, trigger, state, transition, style, Input } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
-import { defaultTransition } from './default-transition.animation';
+import { defaultPageTransition } from './default-transition.animation';
 
 @Component({
   selector: 'ng2-page-transition',
   template: '<div [@ng2ElementState]="animation.custom || animation.state"><ng-content></ng-content></div>',
-  animations: [defaultTransition()],
+  animations: [defaultPageTransition()],
 })
 
 export class Ng2PageTransition{

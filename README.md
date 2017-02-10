@@ -87,13 +87,13 @@ export class MyComponent {
 
 ```TypeScript
  //custom-transition.animation.ts
-import {trigger, state, animate, style, transition} from '@angular/core';
+import {trigger, state, animate, style, transition, AnimationEntryMetadata} from '@angular/core';
 
-export function customTransition() {
+export function customTransition():AnimationEntryMetadata {
   return slideOutAndIn();
 }
 
-function slideOutAndIn() {
+function slideOutAndIn():AnimationEntryMetadata {
   return trigger('ng2ElementState', [
     state('leave', style({
         position:'fixed', 

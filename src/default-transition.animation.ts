@@ -1,10 +1,10 @@
-import {trigger, state, animate, style, transition} from '@angular/core';
+import {trigger, state, animate, style, transition, AnimationEntryMetadata} from '@angular/core';
 
-export function defaultTransition() {
+export function defaultPageTransition(): AnimationEntryMetadata {
   return fadeOutAndIn();
 }
 
-function fadeOutAndIn() {
+function fadeOutAndIn(): AnimationEntryMetadata {
   return trigger('ng2ElementState', [
     state('leave', style({
         opacity: 0.3,
