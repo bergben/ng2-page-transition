@@ -114,6 +114,7 @@ function slideOutAndIn():AnimationEntryMetadata {
   ]);
 }
 ```
+`customAnimation.state` has three possible states: "enter", "leave" and "out". "out" is set on the router event NavigationEnd (see https://github.com/bergben/ng2-page-transition/blob/master/src/ng2-page-transition.component.ts#L36)
 
 #### enterDelay
 You can wait for the leaving animation to complete:
