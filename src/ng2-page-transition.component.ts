@@ -1,36 +1,38 @@
 import { Component, animate, trigger, state, transition, style, Input } from '@angular/core';
-import { Router, NavigationStart } from '@angular/router';
+import { Router, NavigationStart, NavigationEnd } from '@angular/router';
+import { defaultTransition } from './default-transition.animation';
 
 @Component({
   selector: 'ng2-page-transition',
-  template: '<div style="opacity:0;" [@ng2ElementState]="ng2PageTransition"><ng-content></ng-content></div>',
-  animations: [
-    trigger("ng2ElementState", [
-      state("inactive", style({
-        opacity: 0,
-      })),
-      state("active", style({
-        opacity: 1,
-      })),
-      transition("* => active", animate("600ms ease-in")),
-      transition("* => inactive", animate("300ms ease-out")),
-    ])
-  ]
+  template: '<div [@ng2ElementState]="animation.custom || animation.state"><ng-content></ng-content></div>',
+  animations: [defaultTransition()],
 })
+
 export class Ng2PageTransition{
-  @Input() scrollTop = true;
-  ng2PageTransition: string = "inactive";
+  @Input() scrollTop:boolean = true;
+  @Input() onlyOnRoutes:string[] = [""];
+  @Input() animation: any = {
+      state: "leave",
+      custom: false
+  };
   constructor(private router: Router) {
-    this.ng2PageTransition = "inactive";
+    this.animation.state = "leave";
     router.events.subscribe((event) => {
-      if (event instanceof NavigationStart) {
-        this.ng2PageTransition = "inactive";
-        setTimeout( () => {
-            if(this.scrollTop){
-              window.scrollTo(0, 0);
-            }
-            this.ng2PageTransition = "active";
-        },300);
+      for(let i=0;i<this.onlyOnRoutes.length;i++){
+        if(event.url && event.url.indexOf(this.onlyOnRoutes[i])>-1){
+          if (event instanceof NavigationStart) {
+            this.animation.state = "leave";
+          }
+          else if (event instanceof NavigationEnd) {
+              this.animation.state = "out";
+              if(this.scrollTop){
+                window.scrollTo(0, 0);
+              }
+              setTimeout(()=>{
+                this.animation.state = "enter";
+              },0);
+          }
+        }
       }
     });
   }
