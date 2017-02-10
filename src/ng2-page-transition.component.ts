@@ -13,8 +13,10 @@ export class Ng2PageTransition{
   @Input() onlyOnRoutes:string[] = [""];
   @Input() animation: any = {
       state: "leave",
-      custom: false
+      custom: false,
+      enterDelay: 0
   };
+  delayPromise:Promise<any>;
   constructor(private router: Router) {
     this.animation.state = "leave";
     router.events.subscribe((event) => {
@@ -22,15 +24,23 @@ export class Ng2PageTransition{
         if(event.url && event.url.indexOf(this.onlyOnRoutes[i])>-1){
           if (event instanceof NavigationStart) {
             this.animation.state = "leave";
+            this.delayPromise = new Promise((resolve, reject) => {
+                    window.setTimeout(()=>{
+                        resolve(true);
+                    }, this.animation.enterDelay);
+                }
+            );
           }
           else if (event instanceof NavigationEnd) {
-              this.animation.state = "out";
-              if(this.scrollTop){
-                window.scrollTo(0, 0);
-              }
-              setTimeout(()=>{
-                this.animation.state = "enter";
-              },0);
+              this.delayPromise.then(()=>{
+                  this.animation.state = "out";
+                  if(this.scrollTop){
+                    window.scrollTo(0, 0);
+                  }
+                  setTimeout(()=>{
+                    this.animation.state = "enter";
+                  },0);
+              });
           }
         }
       }
