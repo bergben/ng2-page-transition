@@ -87,7 +87,6 @@ export class MyComponent {
 
 ```TypeScript
  //custom-transition.animation.ts
- [...]
 import {trigger, state, animate, style, transition} from '@angular/core';
 
 export function customTransition() {
