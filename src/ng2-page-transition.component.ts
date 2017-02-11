@@ -32,6 +32,16 @@ export class Ng2PageTransition{
             );
           }
           else if (event instanceof NavigationEnd) {
+            if(typeof this.delayPromise ==="undefined"){
+                this.animation.state = "out";
+                if(this.scrollTop){
+                  window.scrollTo(0, 0);
+                }
+                setTimeout(()=>{
+                  this.animation.state = "enter";
+                },0);
+            }
+            else{
               this.delayPromise.then(()=>{
                   this.animation.state = "out";
                   if(this.scrollTop){
@@ -41,6 +51,7 @@ export class Ng2PageTransition{
                     this.animation.state = "enter";
                   },0);
               });
+            }
           }
         }
       }
