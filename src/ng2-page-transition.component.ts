@@ -43,6 +43,15 @@ export class Ng2PageTransition{
                   },0);
               });
             }
+            else{
+                this.animation.state = "out";
+                if(this.scrollTop){
+                  window.scrollTo(0, 0);
+                }
+                setTimeout(()=>{
+                  this.animation.state = "enter";
+                },0);
+            }
           }
           return;
         }
