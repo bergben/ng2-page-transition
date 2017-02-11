@@ -11,6 +11,11 @@ By default it also scrolls the page to the top on route changes, this can be dis
 ```bash
 $ npm install ng2-page-transition --save
 ```
+Add web-animations-js if you haven't done so already to support all browsers (see https://angular.io/docs/ts/latest/guide/animations.html) 
+
+```bash
+$ npm install web-animations-js --save
+```
 
 ## Usage
 ### Import the component
