@@ -44,6 +44,7 @@ export class Ng2PageTransition{
               });
             }
           }
+          return;
         }
       }
     });
