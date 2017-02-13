@@ -1,5 +1,5 @@
 import { Component, animate, trigger, state, transition, style, Input } from '@angular/core';
-import { Router, NavigationStart, NavigationEnd } from '@angular/router';
+import { Router, NavigationStart, NavigationEnd, NavigationCancel } from '@angular/router';
 import { defaultPageTransition } from './default-transition.animation';
 
 @Component({
@@ -31,7 +31,7 @@ export class Ng2PageTransition{
                 }
             );
           }
-          else if (event instanceof NavigationEnd) {
+          else if (event instanceof NavigationEnd || event instanceof NavigationCancel) {
             if(typeof this.delayPromise !=="undefined"){
               this.delayPromise.then(()=>{
                   this.animation.state = "out";
