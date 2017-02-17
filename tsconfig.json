@@ -1,19 +1,27 @@
 {
-    "compilerOptions": {
-    "module": "commonjs",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "module": "es2015",
     "target": "es5",
-    "lib":["es6","dom", "es2015"],
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "sourceMap": false,
+    "sourceMap": true,
+    "outDir": "build",
     "moduleResolution": "node",
-    "declaration": true
+    "declaration": true,
+    "stripInternal": true,
+    "skipLibCheck": true,
+    "paths": {
+      "@angular/core": ["node_modules/@angular/core"],
+      "@angular/router": ["node_modules/@angular/router"]
+    },
+    "lib":["es6","dom", "es2015"]
   },
   "files": [
     "./ng2-page-transition.ts",
     "./src/ng2-page-transition.component.ts"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "angularCompilerOptions": {
+    "strictMetadataEmit": true
+  }
 }
