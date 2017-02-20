@@ -8,7 +8,7 @@ import { defaultPageTransition } from './default-transition.animation';
   animations: [defaultPageTransition()],
 })
 
-export class Ng2PageTransition{
+export class Ng2PageTransitionComponent{
   @Input() scrollTop:boolean = true;
   @Input() onlyOnRoutes:string[] = [""];
   @Input() animation: any = {

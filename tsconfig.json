@@ -3,10 +3,9 @@
     "baseUrl": ".",
     "module": "es2015",
     "target": "es5",
-    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "sourceMap": true,
-    "outDir": "build",
+    "outDir": "dist",
     "moduleResolution": "node",
     "declaration": true,
     "stripInternal": true,
@@ -18,8 +17,7 @@
     "lib":["es6","dom", "es2015"]
   },
   "files": [
-    "./ng2-page-transition.ts",
-    "./src/ng2-page-transition.component.ts"
+    "./ng2-page-transition.ts"
   ],
   "angularCompilerOptions": {
     "strictMetadataEmit": true

@@ -12,6 +12,10 @@ pids
 lib-cov
 
 .vscode
+dist
+*.metadata.json
+*.ngsummary.json
+*.ngfactory.ts
 
 # Coverage directory used by tools like istanbul
 coverage
@@ -41,6 +45,7 @@ jspm_packages
 # Generated #
 !karma.conf.js
 !karma-test-shim.js
+!rollup.config.js
 *.js
 *.map
 *.d.ts

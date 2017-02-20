@@ -4,7 +4,7 @@ export function defaultPageTransition(): AnimationEntryMetadata {
   return fadeOutAndIn();
 }
 
-function fadeOutAndIn(): AnimationEntryMetadata {
+export function fadeOutAndIn(): AnimationEntryMetadata {
   return trigger('ng2ElementState', [
     state('leave', style({
         opacity: 0.3,
