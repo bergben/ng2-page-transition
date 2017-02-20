@@ -18,20 +18,21 @@ $ npm install web-animations-js --save
 ```
 
 ## Usage
-### Import the component
+### Import the module
 ```TypeScript
 // app.module.ts
 import {NgModule} from '@angular/core';
 import { RouterModule } from '@angular/router'; //Router is required for the component to work
 import {BrowserModule} from '@angular/platform-browser';
-import { Ng2PageTransition } from "ng2-page-transition"; // <-- import the component
+import { Ng2PageTransitionModule } from "ng2-page-transition"; // <-- import the module
 import {MyComponent} from './my.component';
 
 @NgModule({
     imports: [BrowserModule,
               RouterModule.forRoot() //Router is required
+              Ng2PageTransitionModule // <-- include it in your app module
              ],
-    declarations: [MyComponent, Ng2PageTransition],  // <-- include it in your app module
+    declarations: [MyComponent],  
     bootstrap: [MyComponent]
 })
 export class MyAppModule {}
