@@ -1,4 +1,4 @@
-import { Component, animate, trigger, state, transition, style, Input } from '@angular/core';
+import { Component, animate, trigger, state, transition, style, Input, Inject, forwardRef} from '@angular/core';
 import { Router, NavigationStart, NavigationEnd, NavigationCancel } from '@angular/router';
 import { defaultPageTransition } from './default-transition.animation';
 
@@ -17,7 +17,7 @@ export class Ng2PageTransitionComponent{
       enterDelay: 0
   };
   delayPromise:Promise<any>;
-  constructor(private router: Router) {
+  constructor(@Inject(forwardRef(() => Router)) private router: Router) {
     this.animation.state = "leave";
     router.events.subscribe((event) => {
       for(let i=0;i<this.onlyOnRoutes.length;i++){
