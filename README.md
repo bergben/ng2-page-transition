@@ -3,6 +3,8 @@
 # ng2-page-transition
 Simple Angular2 component to create a page transition animation on route changes.
 
+### Works for Angular 2.x only. Angular 4.1 will support route transitions built in, check out https://github.com/bergben/ng2-page-transition/issues/8 
+
 ## Features
 All that this component does is listen for route changes and on NavigationStart it triggers an animation to fade out the current page and fade in the page on the new route. 
 By default it also scrolls the page to the top on route changes, this can be disabled though.
