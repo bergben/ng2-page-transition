@@ -70,6 +70,17 @@ By default the transition will take place on any route change. You can activate 
 ```
 onlyOnRoutes takes an array of strings, in the example above the transition would only happen on any route containing "blog" in the url.
 
+### ignoreOnRoutes
+By default the transition will take place on any route change. You can deactivate the transition for routes that contain one or more certain strings:  
+```html
+<!-- my.component.html -->
+<ng2-page-transition [ignoreOnRoutes]="['blog']">
+    <router-outlet></router-outlet>
+    Some other content
+</ng2-page-transition>
+```
+ignoreOnRoutes takes an array of strings, in the example above the transition wouldn't be triggered on any route containing "blog" in the url.
+
 ### Custom transition
 If you want a different animation than the default fade out and in then you can do that like so:
 ```html
